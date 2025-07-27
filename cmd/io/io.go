@@ -1,6 +1,7 @@
 package io
 
 import (
+	"bufio"
 	"fmt"
 	"log"
 	"os"
@@ -52,5 +53,11 @@ func GetContent(filepath string) (string, error) {
 		return string(content), err
 	}
 
-	return "", nil
+	var content string
+	scanner := bufio.NewScanner(os.Stdin)
+	for scanner.Scan() {
+		content += scanner.Text()
+	}
+
+	return content, nil
 }
