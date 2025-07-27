@@ -1,6 +1,16 @@
 package utils
 
-func GetWordsCountIfRequired(opType string, content string) (int, bool, error) {
+import (
+	"strings"
+	"wcgo/cmd/constants"
+)
 
-	return 0, false, nil
+func GetWordsCountIfRequired(opType string, content string) (*int, error) {
+	if !strings.Contains(opType, constants.WordsCountOp) {
+		return nil, nil
+	}
+
+	count := 0
+
+	return &count, nil
 }

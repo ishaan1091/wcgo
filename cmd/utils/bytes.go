@@ -1,11 +1,16 @@
 package utils
 
-import "strings"
+import (
+	"strings"
+	"wcgo/cmd/constants"
+)
 
-func GetBytesCountIfRequired(opType string, content string) (int, bool, error) {
-	if !strings.Contains(opType, "c") {
-		return 0, false, nil
+func GetBytesCountIfRequired(opType string, content string) (*int, error) {
+	if !strings.Contains(opType, constants.BytesCountOp) {
+		return nil, nil
 	}
 
-	return 0, false, nil
+	count := 0
+
+	return &count, nil
 }
