@@ -3,7 +3,6 @@ package io
 import (
 	"bufio"
 	"fmt"
-	"log"
 	"os"
 	"wcgo/cmd/constants"
 )
@@ -38,12 +37,8 @@ func ValidateOpTypeArgs(opType string) error {
 	return nil
 }
 
-func OutputFatalErrorAndExit(logger *log.Logger, err error) {
-	logger.Fatal(err)
-	os.Exit(1)
-}
-
 func GetContent(filepath string) (string, error) {
+	// Read from filepath if given
 	if filepath != "" {
 		content, err := os.ReadFile(filepath)
 		if err != nil {
@@ -53,6 +48,7 @@ func GetContent(filepath string) (string, error) {
 		return string(content), err
 	}
 
+	// Else read from standard input
 	var content string
 	scanner := bufio.NewScanner(os.Stdin)
 	for scanner.Scan() {
@@ -60,30 +56,4 @@ func GetContent(filepath string) (string, error) {
 	}
 
 	return content, nil
-}
-
-func OutputFormattedResult(logger *log.Logger, bytesCount *int, charactersCount *int, linesCount *int, wordsCount *int, filepath string) {
-	var output string
-
-	if bytesCount != nil {
-		output += fmt.Sprintf("\t%v", *bytesCount)
-	}
-
-	if charactersCount != nil {
-		output += fmt.Sprintf("\t%v", *charactersCount)
-	}
-
-	if linesCount != nil {
-		output += fmt.Sprintf("\t%v", *linesCount)
-	}
-
-	if wordsCount != nil {
-		output += fmt.Sprintf("\t%v", *wordsCount)
-	}
-
-	if filepath != "" {
-		output += fmt.Sprintf(" %v", filepath)
-	}
-
-	logger.Println(output)
 }
