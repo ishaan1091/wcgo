@@ -12,5 +12,9 @@ func GetCharactersCountIfRequired(opType string, content string) (*int, error) {
 
 	count := 0
 
+	for range content {
+		count++
+	}
+
 	return &count, nil
 }
