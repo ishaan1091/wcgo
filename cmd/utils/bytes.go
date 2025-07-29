@@ -10,7 +10,7 @@ func GetBytesCountIfRequired(opType string, content string) (*int, error) {
 		return nil, nil
 	}
 
-	count := 0
+	count := len(content)
 
 	return &count, nil
 }

@@ -10,7 +10,13 @@ func GetLinesCountIfRequired(opType string, content string) (*int, error) {
 		return nil, nil
 	}
 
-	count := 0
+	lines := strings.Split(content, "\n")
+
+	count := len(lines)
+
+	if lines[count-1] == "" {
+		count--
+	}
 
 	return &count, nil
 }

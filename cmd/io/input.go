@@ -15,11 +15,19 @@ func ReadArgs() (string, string) {
 	var opType, filepath string
 
 	if len(args) > 0 {
-		opType = args[0]
+		if args[0] != "" && string(args[0][0]) == "-" {
+			opType = args[0]
 
-		if len(args) > 1 {
-			filepath = args[1]
+			if len(args) > 1 {
+				filepath = args[1]
+			}
+		} else if args[0] != "" {
+			filepath = args[0]
 		}
+	}
+
+	if opType == "" {
+		opType = "-lwc"
 	}
 
 	return opType, filepath
@@ -27,8 +35,15 @@ func ReadArgs() (string, string) {
 
 func ValidateOpTypeArgs(opType string) error {
 	// opType should only contain the possible opTypes
-	opTypes := opType[1:]
-	for _, op := range opTypes {
+	if opType == "" {
+		return nil
+	}
+
+	if string(opType[0]) == "-" {
+		opType = opType[1:]
+	}
+
+	for _, op := range opType {
 		if !constants.IsValidOpType(op) {
 			return fmt.Errorf("invalid flag %v", string(op))
 		}
