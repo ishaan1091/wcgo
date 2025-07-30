@@ -2,6 +2,44 @@
 
 This is an implementation of the wc command line utility in golang
 
+## How to build
+
+Execute the following command from root of repository -
+
+```
+make build
+```
+
+## Commands
+
+```
+
+# Output number of bytes in file
+> <PATH_TO_REPO>/bin/wcgo -c test.txt
+        342190 test.txt
+
+# Output number of lines in file
+> <PATH_TO_REPO>/bin/wcgo -l test.txt
+        7145 test.txt
+
+# Output number of words in file
+> <PATH_TO_REPO>/bin/wcgo -w test.txt
+        58164 test.txt
+
+# Output number of characters in file
+> <PATH_TO_REPO>/bin/wcgo -m test.txt
+        339292 test.txt
+
+# Use pipe operator to pass input and run multiple commands at same time
+> cat test.txt | <PATH_TO_REPO>/bin/wcgo -lcw
+        1       52801   327900
+
+# Run command on default params without invoking any flag
+> <PATH_TO_REPO>/bin/wcgo test.txt
+        7145    58164   342190 test.txt
+
+```
+
 ## References
 
 [StackOverflow Question Explaining Encoding, Unicode and UTF-8](https://stackoverflow.com/questions/643694/what-is-the-difference-between-utf-8-and-unicode)
