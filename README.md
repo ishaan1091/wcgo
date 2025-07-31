@@ -46,4 +46,6 @@ make build
 
 [The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/)
 
+[Strings, bytes, runes and characters in Go](https://go.dev/blog/strings)
+
 [Understanding Buffered I/O and bufio package in golang](https://medium.com/golangspec/introduction-to-bufio-package-in-golang-ad7d1877f762)
