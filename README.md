@@ -33,7 +33,7 @@ Current test coverage:
 -   `cmd/constants`: 100% coverage
 -   `cmd/utils`: 100% coverage
 -   `cmd/io`: 45.5% coverage
--   `cmd`: 65.2% coverage
+-   `cmd`: 58.3% coverage
 
 ## Commands
 
