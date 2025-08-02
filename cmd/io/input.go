@@ -1,8 +1,8 @@
 package io
 
 import (
-	"bufio"
 	"fmt"
+	"io"
 	"os"
 	"wcgo/cmd/constants"
 )
@@ -64,11 +64,9 @@ func GetContent(filepath string) (string, error) {
 	}
 
 	// Else read from standard input
-	var content string
-	scanner := bufio.NewScanner(os.Stdin)
-	for scanner.Scan() {
-		content += scanner.Text() + "\n"
+	content, err := io.ReadAll(os.Stdin)
+	if err != nil {
+		return "", fmt.Errorf("failed to read from stdin: %v", err)
 	}
-
-	return content, nil
+	return string(content), nil
 }
