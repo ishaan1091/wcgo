@@ -26,7 +26,7 @@ func ReadArgs() (string, string) {
 		}
 	}
 
-	if opType == "" {
+	if opType == "" || opType == "-" {
 		opType = "-lwc"
 	}
 
@@ -67,7 +67,7 @@ func GetContent(filepath string) (string, error) {
 	var content string
 	scanner := bufio.NewScanner(os.Stdin)
 	for scanner.Scan() {
-		content += scanner.Text()
+		content += scanner.Text() + "\n"
 	}
 
 	return content, nil

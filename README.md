@@ -10,6 +10,31 @@ Execute the following command from root of repository -
 make build
 ```
 
+### Running Tests
+
+```bash
+# Run all tests
+make test
+
+# Run tests with verbose output
+make test-verbose
+
+# Run tests with coverage
+make test-coverage
+
+# Generate HTML coverage report
+make test-coverage-html
+```
+
+### Test Coverage
+
+Current test coverage:
+
+-   `cmd/constants`: 100% coverage
+-   `cmd/utils`: 100% coverage
+-   `cmd/io`: 45.5% coverage
+-   `cmd`: 65.2% coverage
+
 ## Commands
 
 ```

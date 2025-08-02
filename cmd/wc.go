@@ -7,38 +7,45 @@ import (
 	"wcgo/cmd/utils"
 )
 
-func main() {
-	logger := log.New(os.Stdout, "", 0)
-	opType, filepath := io.ReadArgs()
-
+func ProcessWc(opType string, filepath string, logger *log.Logger) error {
 	if err := io.ValidateOpTypeArgs(opType); err != nil {
-		io.OutputFatalErrorAndExit(logger, err)
+		return err
 	}
 
 	text, err := io.GetContent(filepath)
 	if err != nil {
-		io.OutputFatalErrorAndExit(logger, err)
+		return err
 	}
 
 	bytesCount, err := utils.GetBytesCountIfRequired(opType, text)
 	if err != nil {
-		io.OutputFatalErrorAndExit(logger, err)
+		return err
 	}
 
 	charactersCount, err := utils.GetCharactersCountIfRequired(opType, text)
 	if err != nil {
-		io.OutputFatalErrorAndExit(logger, err)
+		return err
 	}
 
 	linesCount, err := utils.GetLinesCountIfRequired(opType, text)
 	if err != nil {
-		io.OutputFatalErrorAndExit(logger, err)
+		return err
 	}
 
 	wordsCount, err := utils.GetWordsCountIfRequired(opType, text)
 	if err != nil {
-		io.OutputFatalErrorAndExit(logger, err)
+		return err
 	}
 
 	io.OutputFormattedResult(logger, bytesCount, charactersCount, linesCount, wordsCount, filepath)
+	return nil
+}
+
+func main() {
+	logger := log.New(os.Stdout, "", 0)
+	opType, filepath := io.ReadArgs()
+
+	if err := ProcessWc(opType, filepath, logger); err != nil {
+		io.OutputFatalErrorAndExit(logger, err)
+	}
 }
