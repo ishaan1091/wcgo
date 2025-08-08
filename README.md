@@ -67,6 +67,8 @@ Current test coverage:
 
 ## References
 
+[The Secret Life of Text: How Your Keyboard Speaks 100+ Languages](https://ishaan1091.medium.com/the-secret-life-of-text-how-your-keyboard-speaks-100-languages-6370868ea465)
+
 [StackOverflow Question Explaining Encoding, Unicode and UTF-8](https://stackoverflow.com/questions/643694/what-is-the-difference-between-utf-8-and-unicode)
 
 [The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/)
